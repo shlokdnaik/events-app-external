@@ -1,0 +1,44 @@
+<ul >
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+</style>
+    <table style="width:100%">
+      <tr>
+    <th>Event</th>
+    <th>Event Description</th>
+    <th>Event Photograph</th>
+  </tr>
+  {{#events}}
+  <tr>
+      <td>{{ title }}</td>
+      <td>{{ description }}</td>
+       <td>{{ title }}</td>
+      {{!-- <td><a target="_blank" href="img_forest.jpg">{{ img }}</a></td> --}}
+  </tr>
+  {{/events}}
+   </table>
+</ul>

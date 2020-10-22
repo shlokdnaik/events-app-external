@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Team Cloud Bender Website</title>
+  <meta name="HandheldFriendly" content="True" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+</head>
+<body>
+    <div class="container">
+  <div>
+      <h2>Welcome to Cloud Bender's application</h2>
+    {{{body}}}
+</div>
+<div>
+  <h2>Add an event</h2>
+    <form action="/event" method="post">
+       Event : <input name="title" type="text" /> <br />
+       Event Description: <input name="description" type="text" /> <br />
+       Event Photograph: <input type="file" id="img" name="img" accept="image/*"> <br />
+       <br />
+        <input type="submit" name="submit" value="submit" />
+    </form>
+  </div>
+  </div>
+</body>
+</html>
