@@ -27,17 +27,16 @@ img:hover {
 }
 </style>
     <table style="width:100%">
-      <tr>
-    <th>Event</th>
-    <th>Event Description</th>
-    <th>Event Photograph</th>
-  </tr>
+    <tr>
+        <th>Event</th>
+        <th>Event Description</th>
+        <th>Event Date</th>
+    </tr>
   {{#events}}
   <tr>
-      <td>{{ title }}</td>
-      <td>{{ description }}</td>
-       <td>{{ title }}</td>
-      {{!-- <td><a target="_blank" href="img_forest.jpg">{{ img }}</a></td> --}}
+        <td>{{ title }}</td>
+        <td>{{ description }}</td>
+        <td>{{ date }}</td>
   </tr>
   {{/events}}
    </table>
