@@ -1,55 +1,80 @@
 <ul >
     <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px;
-}
-
-img:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-}
-</style>
+        td, th {
+        border: 1px;
+        text-align: left;
+        padding: 8px;
+        }
+      .cardhead {
+            text-transform: uppercase;
+            font-weight: bold;
+            background-color: #0F084B;
+            color: #FFBA08;
+        }
+    </style>
     <table style="width:100%">
-    <tr>
-        <th>Event</th>
-        <th>Event Description</th>
-        <th>Event Date</th>
-        <th>Event Location</th>
-        <th>Event Likes</th>
-    </tr>
-  {{#events}}
-  <tr>
-        <td>{{ title }}</td>
-        <td>{{ description }}</td>
-        <td>{{ date }}</td>
-        <td>{{ location }}</td>
-        <td>{{ likes }}
-        <form method="POST" action="/event/like">
-        <input type="hidden" value="{{id}}" name="id">
-        <input type="submit" value="Like">
-        </form>
-        <form method="POST" action="/event/unlike">
-        <input type="hidden" value="{{id}}" name="id">
-        <input type="submit" value="UN-Like">
-        </form></td>
-  </tr>
-  {{/events}}
-   </table>
+        {{!-- <tr>
+            <th class="table-header">Event</th>
+            <th class="table-header" >Event Description</th>
+            <th class="table-header">Event Date</th>
+            <th class="table-header">Event Location</th>
+            <th class="table-header">Event Likes</th>
+        </tr> --}}
+        {{#events}}
+            <tr>
+                <td>
+                    <div class="card mb-3" style="color:#067BC2">
+                        <div class="card-header cardhead">
+                            {{ title }}
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                {{ description }}
+                            </div>
+                            <div>
+                                {{ date }}
+                            </div>
+                            <div>
+                                {{ location }}
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div>
+                                {{ likes }}
+                            </div>
+                            <div style="display:inline-block">
+                                <form method="POST" action="/event/like">
+                                    <input type="hidden" value="{{id}}" name="id">
+                                    <input type="submit" value="Like">
+                                </form>
+                                <form method="POST" action="/event/unlike">
+                                    <input type="hidden" value="{{id}}" name="id">
+                                    <input type="submit" value="UN-Like">
+                                </form>
+                            </div>
+                        </div>
+                    {{!-- <td>{{ title }}</td>
+                    <td>{{ description }}</td>
+                    <td>{{ date }}</td>
+                    <td>{{ location }}</td>
+                    <td>{{ likes }}
+                    <form method="POST" action="/event/like">
+                    <input type="hidden" value="{{id}}" name="id">
+                    <input type="submit" value="Like">
+                    </form>
+                    <form method="POST" action="/event/unlike">
+                    <input type="hidden" value="{{id}}" name="id">
+                    <input type="submit" value="UN-Like">
+                    </form></td> --}}
+                    </div>
+                </td>
+            </tr>
+        {{/events}}
+    </table>
 </ul>
