@@ -76,9 +76,7 @@ app.get('/', (req, res) => {
                     }); // pass the data from the server to the template
             }
         });
-
 });
-
 
 // defines a route that receives the post request to /event
 app.post('/event',
@@ -99,18 +97,66 @@ app.post('/event',
                 },
                 json: true // response from server will be json format
             },
-            (error, response, body) => {  // third argument: function with three args,
-                // runs when server response received
-                // body hold the return from the server
-                console.log('error:', error); // Print the error if one occurred
-                console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-                console.log(body); // print the return from the server microservice
-                res.redirect("/"); // redirect to the home page
+            () => {  
+                res.redirect("/"); // redirect to the home page on successful response
             });
 
     });
 
+
+// defines a route that receives the post request to /event/like to like the event
+app.post('/event/like',
+    urlencodedParser, // second argument - how to parse the uploaded content
+    // into req.body
+    (req, res) => {
+        // make a request to the backend microservice using the request package
+        // the URL for the backend service should be set in configuration 
+        // using an environment variable. Here, the variable is passed 
+        // to npm start inside package.json:
+        //  "start": "BACKEND_URL=http://localhost:8082 node server.js",
+        request.post(  // first argument: url + data + formats
+            {
+                url: SERVER + '/event/like',  // the microservice end point for liking an event
+                body: req.body,  // content of the form
+                headers: { // uploading json
+                    "Content-Type": "application/json"
+                },
+                json: true // response from backend will be json format
+            },
+            () => {  
+                res.redirect("/"); // redirect to the home page on successful response
+            });
+
+    });
+
+
+// defines a route that receives the delete request to /event/like to unlike the event
+app.post('/event/unlike',
+    urlencodedParser, // second argument - how to parse the uploaded content
+    // into req.body
+    (req, res) => {
+        // make a request to the backend microservice using the request package
+        // the URL for the backend service should be set in configuration 
+        // using an environment variable. Here, the variable is passed 
+        // to npm start inside package.json:
+        //  "start": "BACKEND_URL=http://localhost:8082 node server.js",
+        request.delete(  // first argument: url + data + formats
+            {
+                url: SERVER + '/event/like',  // the microservice end point for liking an event
+                body: req.body,  // content of the form
+                headers: { // uploading json
+                    "Content-Type": "application/json"
+                },
+                json: true // response from backend will be json format
+            },
+            () => {  
+                res.redirect("/"); // redirect to the home page on successful response
+            });
+
+    });    
+
 // create other get and post methods here - version, login,  etc
+
 
 
 

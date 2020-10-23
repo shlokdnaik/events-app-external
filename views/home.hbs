@@ -31,12 +31,24 @@ img:hover {
         <th>Event</th>
         <th>Event Description</th>
         <th>Event Date</th>
+        <th>Event Location</th>
+        <th>Event Likes</th>
     </tr>
   {{#events}}
   <tr>
         <td>{{ title }}</td>
         <td>{{ description }}</td>
         <td>{{ date }}</td>
+        <td>{{ location }}</td>
+        <td>{{ likes }}
+        <form method="POST" action="/event/like">
+        <input type="hidden" value="{{id}}" name="id">
+        <input type="submit" value="Like">
+        </form>
+        <form method="POST" action="/event/unlike">
+        <input type="hidden" value="{{id}}" name="id">
+        <input type="submit" value="UN-Like">
+        </form></td>
   </tr>
   {{/events}}
    </table>
